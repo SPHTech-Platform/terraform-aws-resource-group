@@ -1,6 +1,6 @@
 variable "name" {
   description = <<EOF
-    The resource group's name. It can have a maximum of 127 characters, including letters, numbers, hyphens, dots, and underscores. 
+    The resource group's name. It can have a maximum of 127 characters, including letters, numbers, hyphens, dots, and underscores.
     The name cannot start with AWS or aws.
   EOF
   type        = string
