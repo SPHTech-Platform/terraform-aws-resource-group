@@ -14,10 +14,9 @@ module "tag_and_type" {
   source = "../.."
 
   name        = "rg-lambda-ddb-aft"
-  description = "All Lambda and DDB owned by Platform"
+  description = "All DDB owned by Platform"
   query = {
     resource_filter = [
-      "AWS::Lambda::Function",
       "AWS::DynamoDB::Table",
     ],
     tag_filter = {

@@ -1,39 +1,55 @@
-module "lambda_aft" {
-  source  = "terraform-aws-modules/lambda/aws"
-  version = "~> 7.2.1"
+module "ddb_aft" {
+  source  = "terraform-aws-modules/dynamodb-table/aws"
+  version = "~> 4.0.0"
 
-  publish = true
+  name                        = "ddb-aft"
+  hash_key                    = "id"
+  range_key                   = "title"
+  table_class                 = "STANDARD"
+  deletion_protection_enabled = false
 
-  function_name = "lambda-generic"
-  handler       = "index.lambda_handler"
-  runtime       = "python3.10"
-
-  attach_cloudwatch_logs_policy = false
-  create_role                   = false
-
-  source_path = [
-    "${path.module}/src/index.py",
+  attributes = [
+    {
+      name = "id"
+      type = "N"
+    },
+    {
+      name = "title"
+      type = "S"
+    },
+    {
+      name = "age"
+      type = "N"
+    }
   ]
   tags = {
     managed_by = "AFT"
   }
 }
 
-module "lambda_platform" {
-  source  = "terraform-aws-modules/lambda/aws"
-  version = "~> 7.2.1"
+module "ddb_platform" {
+  source  = "terraform-aws-modules/dynamodb-table/aws"
+  version = "~> 4.0.0"
 
-  publish = true
+  name                        = "ddb-platform"
+  hash_key                    = "id"
+  range_key                   = "title"
+  table_class                 = "STANDARD"
+  deletion_protection_enabled = false
 
-  function_name = "lambda-generic"
-  handler       = "index.lambda_handler"
-  runtime       = "python3.10"
-
-  attach_cloudwatch_logs_policy = false
-  create_role                   = false
-
-  source_path = [
-    "${path.module}/src/index.py",
+  attributes = [
+    {
+      name = "id"
+      type = "N"
+    },
+    {
+      name = "title"
+      type = "S"
+    },
+    {
+      name = "age"
+      type = "N"
+    }
   ]
   tags = {
     owner = "Platform"
