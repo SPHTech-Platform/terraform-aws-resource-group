@@ -27,8 +27,8 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_description"></a> [description](#input\_description) | A description of the resource group. | `string` | `""` | no |
-| <a name="input_name"></a> [name](#input\_name) | The resource group's name. It can have a maximum of 127 characters, including letters, numbers, hyphens, dots, and underscores. <br>    The name cannot start with AWS or aws. | `string` | n/a | yes |
-| <a name="input_query"></a> [query](#input\_query) | The query that defines the membership of the group. This is a structure with properties that depend on the Type.<br>    Only `TAG_FILTERS_1_0` type is supported.<br>    `tag_filter` - A list of key-value pair objects that limit which resources can be members of the resource group.<br>    `resource_filter` - A list of resource types that can be included in the resource group. | <pre>object({<br>    tag_filter      = map(string)<br>    resource_filter = optional(list(string), ["AWS::AllSupported"])<br>  })</pre> | `null` | no |
+| <a name="input_name"></a> [name](#input\_name) | The resource group's name. It can have a maximum of 127 characters, including letters, numbers, hyphens, dots, and underscores.<br>    The name cannot start with AWS or aws. | `string` | n/a | yes |
+| <a name="input_query"></a> [query](#input\_query) | The query that defines the membership of the group. This is a structure with properties that depend on the Type.<br>    Only `TAG_FILTERS_1_0` type is supported.<br>    `tag_filter` - A list of key-value pair objects that limit which resources can be members of the resource group.<br>    `resource_filter` - A list of resource types that can be included in the resource group. | <pre>object({<br>    tag_filter      = optional(map(string), {})<br>    resource_filter = optional(list(string), ["AWS::AllSupported"])<br>  })</pre> | `{}` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Key-value map of resource tags to assign to the resource group. | `map(string)` | `{}` | no |
 
 ## Outputs

@@ -20,10 +20,10 @@ variable "query" {
     `resource_filter` - A list of resource types that can be included in the resource group.
   EOF
   type = object({
-    tag_filter      = map(string)
+    tag_filter      = optional(map(string), {})
     resource_filter = optional(list(string), ["AWS::AllSupported"])
   })
-  default = null
+  default = {}
 }
 
 variable "tags" {
